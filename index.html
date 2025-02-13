@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Card</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: 'Arial', sans-serif;
+            perspective: 1500px;
+        }
+
+        .card {
+            width: 600px;
+            height: 400px;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 1s ease;
+        }
+
+        .card.open {
+            transform: rotateY(-180deg);
+        }
+
+        .card-front, .card-inside {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card-front {
+            background: linear-gradient(45deg, #ff6b6b, #ffc3a0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 70px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .card-front::before {
+            content: 'Nong ❣️ Maan';
+        }
+
+        .card-inside {
+            background: #fff;
+            transform: rotateY(180deg);
+            display: flex;
+            position: relative;
+        }
+
+        .card-left {
+            flex: 1.5; /* Make the left side larger */
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-frame {
+            width: 100%;
+            height: 100%;
+            border: none; /* Remove border for a cleaner look */
+            border-radius: 10px; /* Slightly rounded corners */
+            overflow: hidden;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-right {
+            flex: 1; /* Right side remains smaller */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .message {
+            font-size: 1.2em;
+            color: #ff6b6b;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .signature {
+            font-size: 0.8em;
+            color: #b23a48;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-style: italic;
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-front"></div>
+        <div class="card-inside">
+            <div class="card-left">
+                <div class="photo-frame">
+                    <img src="image/1.jpg" alt="Couple Photo">
+                </div>
+            </div>
+            <div class="card-right">
+                <div class="message">
+                    <h2>Happy Valentine's Day!</h2>
+                    <p>My love, every moment with you is a precious gift. You are my greatest treasure, my forever and always.</p>
+                    <p>I Love You! ❣️</p>
+                </div>
+                <div class="signature">Love, Nong</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
