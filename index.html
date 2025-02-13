@@ -14,11 +14,16 @@
             background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
             font-family: 'Arial', sans-serif;
             perspective: 1500px;
+            overflow-x: hidden;
         }
 
         .card {
-            width: 600px;
-            height: 400px;
+            width: 90vw;
+            max-width: 600px;
+            /* Height now adjusts to content, but maintains aspect ratio if possible */
+            height: auto; /* Key change: height is now auto */
+            max-height: 90vh; /* Set a maximum height to prevent it from getting too large */
+            aspect-ratio: 2/3; /* Maintain aspect ratio */
             position: relative;
             cursor: pointer;
             transform-style: preserve-3d;
@@ -36,14 +41,14 @@
             backface-visibility: hidden;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
         }
 
         .card-front {
             background: linear-gradient(45deg, #ff6b6b, #ffc3a0);
-            display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 70px;
+            font-size: calc(20px + 5vw);
             font-weight: bold;
             color: white;
         }
@@ -56,22 +61,21 @@
             background: #fff;
             transform: rotateY(180deg);
             display: flex;
-            position: relative;
+            flex-direction: column;
+            height: 100%;
         }
 
         .card-left {
-            flex: 1.5; /* Make the left side larger */
+            flex: 1.5;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            overflow: hidden;
         }
 
         .photo-frame {
             width: 100%;
             height: 100%;
-            border: none; /* Remove border for a cleaner look */
-            border-radius: 10px; /* Slightly rounded corners */
+            border: none;
+            border-radius: 10px;
             overflow: hidden;
         }
 
@@ -82,29 +86,28 @@
         }
 
         .card-right {
-            flex: 1; /* Right side remains smaller */
-            padding: 20px;
+            flex: 1;
+            padding: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
+            overflow: hidden;
         }
 
         .message {
-            font-size: 1.2em;
+            font-size: calc(1em + 0.5vw);
             color: #ff6b6b;
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.4;
+            margin-bottom: 10px;
         }
 
         .signature {
-            font-size: 0.8em;
+            font-size: calc(0.7em + 0.3vw);
             color: #b23a48;
-            position: absolute;
-            bottom: 10px;
-            right: 20px;
-            font-style: italic;
+            margin-top: auto;
+            text-align: right;
         }
 
         .heart {
@@ -117,6 +120,20 @@
         @keyframes float {
             0% { transform: translateY(0) rotate(0deg); }
             100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        @media (max-width: 600px) {
+            .card-inside {
+                flex-direction: column;
+            }
+
+            .card-left {
+                flex: 1;
+            }
+
+            .card-right {
+                flex: 1;
+            }
         }
     </style>
 </head>
